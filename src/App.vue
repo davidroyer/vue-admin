@@ -4,8 +4,6 @@
 <div id="q-app">
 
   <q-layout>
-  <div id="eTest"></div>
-  <div id="eContent">Test Content</div>
 
     <div slot="header" class="toolbar">
       <button class="hide-on-drawer-visible" @click="$refs.leftDrawer.open()">
