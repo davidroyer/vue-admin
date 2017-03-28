@@ -74,18 +74,13 @@ const {EditorView} = require("prosemirror-view")
 const {DOMParser} = require("prosemirror-model")
 const {schema} = require("prosemirror-schema-basic")
 const {exampleSetup} = require("prosemirror-example-setup")
+// import YAML from 'yamljs'
 
-// window.view = new EditorView(document.querySelector("#eTest"), {
-//   state: EditorState.create({
-//     doc: DOMParser.fromSchema(schema).parse(document.querySelector("#eContent")),
-//     plugins: exampleSetup({schema})
-//   })
-// })
 /*
  * Root component
  */
 /* eslint-disable */
-// import GitHub from 'github-api'
+
 import _ from 'lodash'
 
 import {SITE, REPO} from './site.js'
@@ -101,7 +96,6 @@ export default {
   created() {
     this.getPosts()
     this.getPages()
-
   },
   mounted() {
     this.createPostTitles()
@@ -127,6 +121,14 @@ export default {
         });
       })
     },
+
+    // getConfig() {
+    //   REPO.getContents('master', 'src/cms/config.yml', true, (err, configResponse) => {
+    //     let nativeObject = YAML.parse(configResponse);
+    //     console.log(nativeObject);
+    //     // this.config =
+    //   })
+    // },
 
     createPostTitles() {
       var vm = this

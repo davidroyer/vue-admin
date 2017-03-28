@@ -5,14 +5,15 @@
       <div class="transition__innerWrapper" :key="$route.params.id">
         <h1 v-text="id"></h1>
         <button class="primary" @click="openEditor">Open Editor</button>
-        <editor></editor>
+
         <q-uploader v-if="showPhotoUploader" :labels="labels" :hideUploadButton="true" url="/" @add="handleUpload"></q-uploader>
         <transition name="slide-fade">
 
-          <div id="editor" v-if="inEditMode" class="editor" >
+          <div id="editorWrapper" v-if="inEditMode" class="editor" >
+            <editor :content="input"></editor>
             <!-- <textarea name="name" rows="8" :value="forRepo" cols="80"></textarea> -->
-            <textarea class="editor__area" :value="input" @input="updateEditor"></textarea>
-            <div class="editor__preview" v-html="compiledMarkdown"></div>
+            <!-- <textarea class="editor__area" :value="input" @input="updateEditor"></textarea>
+            <div class="editor__preview" v-html="compiledMarkdown"></div> -->
             <div class=" editor__buttonsWrapper fixed-bottom-right">
               <button type="button" name="save" class="light" @click="inEditMode = false">Cancel</button>
               <button type="button" name="save" class="primary" @click="updateRepoFile(forRepo)">Update File</button>
@@ -134,17 +135,22 @@ export default {
 </script>
 
 <style>
-.editor {
+#editorWrapper {
   position: fixed;
   right: 0;
   top: 50px;
-  width: 60%;
   background: #f6f6f6;
   display: flex;
   bottom: 0;
   padding: 1em;
+  width: 100%;
 }
 
+@media(min-width:921px) {
+  #editorWrapper {
+    width: 60%;
+  }
+}
 .editor__area {
   width: 40%;
   border-right: 1px solid rgba(149, 149, 149, 0.52);

@@ -11,13 +11,13 @@ import Quasar from 'quasar'
 import router from './router'
 import GitHub from 'github-api'
 import VueStash from 'vue-stash';
-Vue
+
 window._ = require('lodash')
-// import Prosemirror from 'vue-prosemirror-2'
+import Prosemirror from 'vue-prosemirror-2'
 
 Vue.use(Quasar) // Install Quasar Framework
 Vue.use(VueStash)
-// Vue.use(Prosemirror)
+Vue.use(Prosemirror)
 // console.log(Prosemirror);
 
 Quasar.start(() => {
